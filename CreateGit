@@ -1,0 +1,35 @@
+class BankAccount():
+	def __init__(self, accountNumber, balance):
+		self.accountNumber = accountNumber
+		self.balance = balance
+	def getAccountInfo(self):
+		return str(self.accountNumber) + "\nInitial Balance: $" + str(self.balance)
+		
+class CheckingAccount(BankAccount):
+	def __init__(self, accountNumber, balance, fees, minimumBalance):
+		BankAccount.__init__(self, accountNumber, balance)
+		self.fees = fees
+		self.min_bal = minimumBalance
+	def getCheckingAccount(self):
+		return self.getAccountInfo() + "\nThe fees are $" + str(self.fees) + "." + " The minimum required balance is $" + str(self.min_bal)
+	
+class SavingAccount(BankAccount):
+	def __init__(self, accountNumber, balance, intrestRate, addIntrest):
+		BankAccount.__init__(self, accountNumber, balance)
+		self.intrest = intrestRate
+		self.addIntrest = addIntrest
+	def getSavingAccount(self):
+		return self.getAccountInfo() + "\nThe intrest rate is: " + str(self.intrest) + "%. " + "The ending balance is: $" + str(self.addIntrest)
+		
+c_dollar_checking = CheckingAccount(322314, 100, 5, 50)
+print("Account number: " + c_dollar_checking.getCheckingAccount() + "\n")
+
+c_dollar_savings = SavingAccount(322315, 100, 2, 102)
+print("Account number: " + c_dollar_savings.getSavingAccount() + "\n")
+
+
+xxv_dollar_checking = CheckingAccount(9000, 25, 5, 50)
+print("Account number: " + xxv_dollar_checking.getCheckingAccount() + " The minimum balance has not been reached. Please add funds.\n")
+
+xxv_dollar_Savings = SavingAccount(9001, 25, 2, 25.50)
+print("Account number: " + xxv_dollar_Savings.getSavingAccount() + "\n")
